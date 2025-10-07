@@ -132,7 +132,7 @@ jobs:
             echo "Validating commit $commit: $COMMIT_MSG"
             
             # Strict regex for conventional commits
-            if ! echo "$COMMIT_MSG" | grep -qE "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore)(\([a-z0-9\-]+\))?!?: .{1,72}$"; then
+            if ! echo "$COMMIT_MSG" | grep -qE "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore)(\([a-z0-9\-]+\))?!?: .{1,100}$"; then
               echo "❌ STRICT VALIDATION FAILED for protected branch"
               echo "Commit: $commit"
               echo "Message: $COMMIT_MSG"
@@ -140,7 +140,7 @@ jobs:
               echo "Protected branches require strict conventional commit format:"
               echo "- Type must be lowercase"
               echo "- Scope (if present) must be lowercase with hyphens"
-              echo "- Description must be 1-72 characters"
+              echo "- Description must be 1-100 characters"
               echo "- No trailing periods"
               echo ""
               echo "Example: feat(device-mgmt): add device registration endpoint"

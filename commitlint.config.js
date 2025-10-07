@@ -1,6 +1,16 @@
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
+    // Allow longer commit message body (default is 100, we'll set to 500)
+    'body-max-length': [2, 'always', 500],
+    
+    // Allow longer commit message subject (increase from 72 to 100)
+    'subject-max-length': [2, 'always', 100],
+    
+    // Ensure body has max line length of 100 chars (but allow longer total body)
+    'body-max-line-length': [2, 'always', 100],
+    
+    // Keep other conventional commit rules
     'type-enum': [
       2,
       'always',
@@ -22,6 +32,6 @@ module.exports = {
     'scope-case': [2, 'always', 'lower-case'],
     'subject-empty': [2, 'never'],
     'subject-full-stop': [2, 'never', '.'],
-    'header-max-length': [2, 'always', 72]
+    'header-max-length': [2, 'always', 100]
   }
 };
