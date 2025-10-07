@@ -80,7 +80,7 @@ This project uses [Semantic Versioning](https://semver.org/) with automated rele
 
 We follow [Conventional Commits](https://www.conventionalcommits.org/) specification:
 
-```
+```text
 <type>[optional scope]: <description>
 
 [optional body]
