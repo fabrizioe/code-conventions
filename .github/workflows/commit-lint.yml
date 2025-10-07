@@ -158,9 +158,28 @@ jobs:
     steps:
       - name: Validation Summary
         run: |
-          if [[ "${{ needs.commitlint.result }}" == "success" && "${{ needs.commit-message-check.result }}" == "success" ]]; then
-            echo "✅ All commit message validations passed!"
-            echo "Commits follow Conventional Commit format."
+          COMMITLINT_RESULT="${{ needs.commitlint.result }}"
+          COMMIT_CHECK_RESULT="${{ needs.commit-message-check.result }}"
+          
+          echo "Commitlint result: $COMMITLINT_RESULT"
+          echo "Commit message check result: $COMMIT_CHECK_RESULT"
+          
+          # Check if commitlint passed (this runs on both push and PR)
+          if [[ "$COMMITLINT_RESULT" == "success" ]]; then
+            # For push events, also check commit-message-check
+            if [[ "${{ github.event_name }}" == "push" ]]; then
+              if [[ "$COMMIT_CHECK_RESULT" == "success" ]]; then
+                echo "✅ All commit message validations passed!"
+                echo "Commits follow Conventional Commit format."
+              else
+                echo "❌ Commit message validation failed on push!"
+                exit 1
+              fi
+            else
+              # For PR events, only commitlint needs to pass
+              echo "✅ All commit message validations passed for PR!"
+              echo "Commits follow Conventional Commit format."
+            fi
           else
             echo "❌ Commit message validation failed!"
             echo "Please update your commit messages to follow Conventional Commits format."
