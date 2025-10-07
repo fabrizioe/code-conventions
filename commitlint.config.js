@@ -7,8 +7,8 @@ module.exports = {
     // Allow longer commit message subject (increase from 72 to 100)
     'subject-max-length': [2, 'always', 100],
     
-    // Ensure body has max line length of 150 chars (increased to allow longer lines)
-    'body-max-line-length': [2, 'always', 150],
+    // Ensure body has max line length of 250 chars (increased to allow longer lines)
+    'body-max-line-length': [2, 'always', 250],
     
     // Keep other conventional commit rules
     'type-enum': [
