@@ -84,7 +84,7 @@ func (h *Handler) HelloWithName(w http.ResponseWriter, r *http.Request) {
 	h.requests++
 	vars := mux.Vars(r)
 	name := vars["name"]
-	
+
 	h.logger.Printf("Hello with name '%s' requested from %s", name, r.RemoteAddr)
 
 	if name == "" {

@@ -31,14 +31,14 @@ func main() {
 
 	// Setup router
 	router := mux.NewRouter()
-	
+
 	// Health check endpoint
 	router.HandleFunc("/health", h.HealthCheck).Methods("GET")
-	
+
 	// HelloWorld endpoints
 	router.HandleFunc("/hello", h.Hello).Methods("GET")
 	router.HandleFunc("/hello/{name}", h.HelloWithName).Methods("GET")
-	
+
 	// Metrics endpoint
 	router.HandleFunc("/metrics", h.Metrics).Methods("GET")
 
