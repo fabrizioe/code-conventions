@@ -1,0 +1,22 @@
+# GitLeaks configuration for demo purposes
+title = "GitLeaks config for HelloWorld demo"
+
+[extend]
+# useDefault will extend the base configuration with the default gitleaks config:
+# https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml
+useDefault = true
+
+[allowlist]
+description = "Demo project allowlist"
+paths = [
+    '''(?i).*test.*''',
+    '''(?i).*mock.*''',
+    '''(?i).*example.*''',
+]
+
+# Disable certain rules that are too noisy for demo
+[[rules]]
+id = "generic-api-key"
+description = "Generic API Key"
+regex = '''(?i)(?:key|api|token|secret|password)[[:space:]]*[:=][[:space:]]*['"]?[0-9a-zA-Z\-_]{10,}['"]?'''
+keywords = ["key", "api", "token", "secret", "password"]
