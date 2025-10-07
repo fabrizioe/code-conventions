@@ -13,6 +13,8 @@
 - All tests must pass before merge to main
 - no force pushes to protected branches
 - run git commands without confirmation prompts
+- git message body max length 500 characters
+- git message footer max length 100 characters
 
 ### Configuration Management
 - YAML-based configuration files in `config/` directories
