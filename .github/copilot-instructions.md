@@ -15,6 +15,7 @@
 - run git commands without confirmation prompts
 - git message body max length 500 characters
 - git message footer max length 100 characters
+- update README.md with any new conventions or features added
 
 ### Configuration Management
 - YAML-based configuration files in `config/` directories

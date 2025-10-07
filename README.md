@@ -1,6 +1,6 @@
 # GitHub Actions CI/CD Pipeline
 
-This repository implements a comprehensive CI/CD pipeline following trunk-based development practices with semantic versioning and automated release management.
+This repository implements a comprehensive CI/CD pipeline following trunk-based development practices with semantic versioning and automated release management. Semantic-release automatically tags new releases on the main branch after pull requests are merged. The develop branch is used for feature integration and does not trigger releases.
 
 ## Pipeline Overview
 
@@ -18,17 +18,17 @@ The CI pipeline triggers on every push to any branch and includes:
 
 The CD pipeline triggers on main branch and includes:
 
-- **Semantic Release**: Automated versioning based on conventional commits
+- **Semantic Release**: Automated versioning and tagging based on conventional commits (runs only on main branch after PR merge)
 - **Release Notes**: Auto-generated changelogs
-- **Container Registry**: Automated image publishing to GitHub Container Registry
+- **Container Registry**: Automated image publishing to GitHub Container Registry (requires PAT with write:packages scope)
 - **GitHub Releases**: Binary artifacts and release notes
 
 ## Branch Protection
 
 ### Protected Branches
 
-- **main**: Production branch with strict protection rules
-- **develop**: Integration branch (if used) with standard protection
+- **main**: Production branch for official releases. Semantic-release tags and publishes releases only from main after PRs are merged.
+- **develop**: Integration branch for new features. No releases or tags are created from develop.
 
 ### Protection Rules
 
@@ -156,10 +156,23 @@ Docker images are automatically built and published to GitHub Container Registry
 - **Registry**: `ghcr.io`
 - **Image**: `ghcr.io/{owner}/{repo}/{DOCKER_IMAGE_NAME}`
 - **Tags**:
-  - `latest` (main branch)
-  - `{branch-name}` (feature branches)
-  - `{branch-name}-{sha}` (commit-specific)
-  - `pr-{number}` (pull requests)
+   - `latest` (main branch)
+   - `{branch-name}` (feature branches)
+   - `{branch-name}-{sha}` (commit-specific)
+   - `pr-{number}` (pull requests)
+
+### Authentication for Docker Push
+
+To push images to GitHub Container Registry, you must use a Personal Access Token (PAT) with `write:packages` and `read:packages` scopes. Add this token as a secret (e.g., `GHCR_PAT`) in your repository or organization settings. The workflow uses this secret for Docker login:
+
+```yaml
+- name: Log in to Container Registry
+   uses: docker/login-action@v3
+   with:
+      registry: ghcr.io
+      username: ${{ github.actor }}
+      password: ${{ secrets.GHCR_PAT }}
+```
 
 ### Image Naming
 
@@ -254,13 +267,13 @@ npx commitlint --from HEAD~1 --to HEAD --verbose
 
 ## Release Process
 
-Releases are fully automated:
+Releases are fully automated and only occur on the main branch:
 
-1. **Commit** to main branch with conventional commit message
+1. **Merge Pull Request** into main branch (from develop or feature branch)
 2. **CI Pipeline** validates all checks pass
 3. **Semantic Release** analyzes commits and determines version
-4. **GitHub Release** created with auto-generated notes
+4. **GitHub Release** created with auto-generated notes and semver tag
 5. **Container Images** tagged and published
 6. **Changelog** updated in repository
 
-No manual intervention required for releases!
+No manual intervention required for releases! Develop branch is used for feature integration and does not trigger releases or tags.
