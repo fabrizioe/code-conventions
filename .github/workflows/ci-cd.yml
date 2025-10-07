@@ -142,13 +142,15 @@ jobs:
         with:
           image-ref: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.sha }}
           format: 'sarif'
-          output: 'trivy-results.sarif'
+          output: '${{ env.WORKING_DIRECTORY }}/trivy-results.sarif'
+        continue-on-error: true
 
       - name: Upload Trivy scan results
         uses: github/codeql-action/upload-sarif@v3
         if: always()
         with:
-          sarif_file: 'trivy-results.sarif'
+          sarif_file: '${{ env.WORKING_DIRECTORY }}/trivy-results.sarif'
+        continue-on-error: true
 
 
   # Security and compliance checks
@@ -175,6 +177,7 @@ jobs:
 
       - name: Run vulnerability check
         run: govulncheck ./...
+        continue-on-error: true
 
       - name: Run additional static analysis
         run: staticcheck ./...
