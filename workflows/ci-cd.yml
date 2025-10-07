@@ -9,8 +9,8 @@ on:
 env:
   REGISTRY: ghcr.io
   GO_VERSION: '1.21'
-  SERVICE_NAME: 'my-service'
-  DOCKER_IMAGE_NAME: 'my-service'
+  SERVICE_NAME: 'helloworld'
+  DOCKER_IMAGE_NAME: 'helloworld'
   WORKING_DIRECTORY: './src'
 
 jobs:
