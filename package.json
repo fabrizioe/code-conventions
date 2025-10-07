@@ -1,0 +1,17 @@
+{
+  "name": "code-conventions",
+  "version": "0.0.0",
+  "description": "CI/CD pipeline with semantic-release for automated versioning and releases.",
+  "main": "index.js",
+  "scripts": {
+    "semantic-release": "semantic-release"
+  },
+  "devDependencies": {
+    "semantic-release": "^22.0.0",
+    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.0.5",
+    "@semantic-release/commit-analyzer": "^10.0.1",
+    "@semantic-release/release-notes-generator": "^11.0.4"
+  }
+}
