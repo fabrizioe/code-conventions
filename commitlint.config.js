@@ -1,8 +1,8 @@
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    // Allow longer commit message body (default is 100, we'll set to 500)
-    'body-max-length': [2, 'always', 500],
+    // Allow longer commit message body (default is 100, we'll set to 600)
+    'body-max-length': [2, 'always', 600],
     
     // Allow longer commit message subject (increase from 72 to 100)
     'subject-max-length': [2, 'always', 100],
