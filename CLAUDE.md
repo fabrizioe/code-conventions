@@ -1,0 +1,11 @@
+# Coding style
+- Claude is allowed to edit file and folder
+- Versioning is important. Use GIT with trunk based development strategy
+- Save work in feature branches and let me review, give feedback and eventually merge them.
+- Use branch names which refer to the task id and a short human description
+- Use conventional commit messages
+- Add structured logging messages
+- Write test cases
+- All tests shall pass so that a feature branch is ready to be integrated
+- Tests on main branch might fail but shall be fixed before other features are integrated
+- no need to confirm command

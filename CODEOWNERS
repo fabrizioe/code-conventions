@@ -1,0 +1,15 @@
+# Global code owners - all files
+* @ferrante
+
+# Go services
+AuthNZ/provisioning-service/ @ferrante
+**/*.go @ferrante
+
+# Docker and infrastructure
+docker-compose.yml @ferrante
+**/Dockerfile @ferrante
+.github/ @ferrante
+
+# Documentation
+*.md @ferrante
+**/Spec.md @ferrante
