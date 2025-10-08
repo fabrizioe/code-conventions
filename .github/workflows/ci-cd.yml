@@ -1,5 +1,8 @@
 name: Build, dockerize, sec-scan, sem-ver
 
+
+
+
 on:
   push:
     branches: ['**']  # Trigger on all branches
