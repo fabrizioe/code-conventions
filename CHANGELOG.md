@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/fabrizioe/code-conventions/compare/v2.0.1...v2.1.0) (2025-10-08)
+
+
+### Features
+
+* add test file for docker release tagging verification\n\nThis file documents the expected behavior of the docker-release workflow job that tags images with semantic-release version tags. ([2885f89](https://github.com/fabrizioe/code-conventions/commit/2885f89c2ed48d9fcb8b1f5eec5533733932c518))
+
 ## [2.0.1](https://github.com/fabrizioe/code-conventions/compare/v2.0.0...v2.0.1) (2025-10-08)
 
 
