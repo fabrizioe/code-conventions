@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Build, dockerize, sec-scan, sem-ver
 
 on:
   push:
