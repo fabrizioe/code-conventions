@@ -218,7 +218,8 @@ jobs:
   docker-release:
     name: Build & Push Docker Image on Release
     runs-on: ubuntu-latest
-    if: github.event_name == 'release' && github.event.action == 'published'
+    needs: [release]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     env:
       REGISTRY: ghcr.io
       SERVICE_NAME: 'helloworld'
@@ -243,10 +244,13 @@ jobs:
       - name: Extract release tag
         id: extract_tag
         run: |
-          TAG="${GITHUB_REF##*/}"
+          # Get the latest tag created by semantic-release
+          git fetch --tags
+          TAG=$(git describe --tags --abbrev=0)
           # Remove 'v' prefix if present (semantic-release uses v1.0.0)
           IMAGE_TAG="${TAG#v}"
           echo "release_tag=$IMAGE_TAG" >> $GITHUB_OUTPUT
+          echo "Found latest tag: $TAG -> Docker tag: $IMAGE_TAG"
 
       - name: Build and push Docker image with release tag
         uses: docker/build-push-action@v5
