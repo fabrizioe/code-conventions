@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/fabrizioe/code-conventions/compare/v2.0.0...v2.0.1) (2025-10-08)
+
+
+### Bug Fixes
+
+* **workflow:** tag Docker images with semantic-release release tag\n\nDocker images are now tagged and pushed using the semantic-release version (e.g., 1.0.0) on release events. This ensures proper versioning and traceability for published images. ([f7e1f5d](https://github.com/fabrizioe/code-conventions/commit/f7e1f5d9eec61237e30f6a03d0510b1d8d835951))
+
 # [2.0.0](https://github.com/fabrizioe/code-conventions/compare/v1.0.0...v2.0.0) (2025-10-08)
 
 
