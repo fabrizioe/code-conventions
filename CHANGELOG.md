@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/fabrizioe/code-conventions/compare/v2.1.0...v2.1.1) (2025-10-08)
+
+
+### Bug Fixes
+
+* **workflow:** run docker-release after semantic-release on main push\n\nChanged docker-release job to run after the release job completes on main branch push events, instead of requiring a separate release event trigger. This allows it to build and tag Docker images immediately after semantic-release creates a new version tag. ([7243dd6](https://github.com/fabrizioe/code-conventions/commit/7243dd68ee4a0e08d9d8cb1139159751b685e665))
+
 # [2.1.0](https://github.com/fabrizioe/code-conventions/compare/v2.0.1...v2.1.0) (2025-10-08)
 
 
