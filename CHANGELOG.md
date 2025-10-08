@@ -1,3 +1,13 @@
+# [2.0.0](https://github.com/fabrizioe/code-conventions/compare/v1.0.0...v2.0.0) (2025-10-08)
+
+
+* feat!: remove deprecated API endpoint ([a32b533](https://github.com/fabrizioe/code-conventions/commit/a32b533182a2b807f5c52ce2edde8a2c1ffef47b))
+
+
+### BREAKING CHANGES
+
+* The /api/v1/old-endpoint has been removed. Use /api/v2/new-endpoint instead.
+
 # 1.0.0 (2025-10-08)
 
 
